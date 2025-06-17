@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <EditText
+        android:id="@+id/elap"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="몇 초 후 알람"
+        android:inputType="number" />
+
+    <Button
+        android:id="@+id/reg1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="n초 후 알람 설정" />
+
+    <Button
+        android:id="@+id/cancel1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="n초 후 알람 해제" />
+
+    <Button
+        android:id="@+id/date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="날짜 선택" />
+
+    <Button
+        android:id="@+id/time"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="시간 선택" />
+
+    <Button
+        android:id="@+id/reg2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="날짜 알람 등록" />
+
+    <Button
+        android:id="@+id/cancel2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="날짜 알람 해제" />
+
+</LinearLayout>

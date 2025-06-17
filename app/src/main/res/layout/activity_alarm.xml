@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <EditText
+        android:id="@+id/elap"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="몇 초 후 알람"
+        android:inputType="number" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="일어 나세요!!!" />
+
+    <Button
+        android:id="@+id/btnAlarmOff"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="알람끄기" />
+
+</LinearLayout>
