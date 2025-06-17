@@ -9,7 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Button btnAlarm, btnMouse, btnStt, btnTts, btnTodo;
+    private Button btnAlarm, btnMouse, btnStt, btnTts, btnTodo, btnRss;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
         btnStt = findViewById(R.id.btnStt);
         btnTts = findViewById(R.id.btnTts);
         btnTodo = findViewById(R.id.btnTodo);
+        btnRss = findViewById(R.id.btnRss);   // ⭐ 추가 ⭐
 
         btnAlarm.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -58,6 +59,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, TodoActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        btnRss.setOnClickListener(new View.OnClickListener() {  // ⭐ 추가 ⭐
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, RssMainActivity.class);
                 startActivity(intent);
             }
         });

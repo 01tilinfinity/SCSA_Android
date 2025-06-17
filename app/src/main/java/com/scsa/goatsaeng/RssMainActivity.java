@@ -4,142 +4,98 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.util.Xml;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import org.xmlpull.v1.XmlPullParser;
 
-import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.Reader;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class RssMainActivity extends AppCompatActivity {
     private static final String TAG = "RssMainActivity_SCSA";
-    ListView listView;
-    MyAdapter adapter;
-    List<HaniItem> list = new ArrayList<>();
+
+    private ListView listView;
+    private RssAdapter adapter;
+    private List<RssItem> rssItemList = new ArrayList<>();
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rss_main);
 
         listView = findViewById(R.id.result);
-        adapter = new MyAdapter();
+        adapter = new RssAdapter(this, rssItemList);
         listView.setAdapter(adapter);
 
-        new MyAsyncTask().execute("https://www.hani.co.kr/rss/");
-
-        listView.setOnItemClickListener((parent, view, position, id) -> {
-            Toast.makeText(RssMainActivity.this, list.get(position).title, Toast.LENGTH_SHORT).show();
-        });
+        new RssAsyncTask().execute("https://www.hani.co.kr/rss/");
     }
 
-    class MyAsyncTask extends AsyncTask<String, String, List<HaniItem>> {
+    private class RssAsyncTask extends AsyncTask<String, Void, List<RssItem>> {
 
         @Override
-        protected List<HaniItem> doInBackground(String... arg) {
+        protected List<RssItem> doInBackground(String... urls) {
             try {
-                InputStream input = new URL(arg[0]).openConnection().getInputStream();
-                parsing(new BufferedReader(new InputStreamReader(input)));
+                URL url = new URL(urls[0]);
+                InputStream inputStream = url.openConnection().getInputStream();
+                parseRss(inputStream);
             } catch (Exception e) {
                 e.printStackTrace();
             }
-            return list;
+            return rssItemList;
         }
-
-        protected void onPostExecute(List<HaniItem> result) {
-            adapter.notifyDataSetChanged();
-        }
-
-        XmlPullParser parser = Xml.newPullParser();
-
-        private void parsing(Reader reader) throws Exception {
-            parser.setInput(reader);
-            int eventType = parser.getEventType();
-            HaniItem item = null;
-            long id = 0;
-            while (eventType != XmlPullParser.END_DOCUMENT) {
-                String name = null;
-                switch (eventType) {
-                    case XmlPullParser.START_TAG:
-                        name = parser.getName();
-                        if (name.equalsIgnoreCase("item")) {
-                            item = new HaniItem();
-                            item.id = ++id;
-                        } else if (item != null) {
-                            if (name.equalsIgnoreCase("title")) {
-                                item.title = parser.nextText();
-                            } else if (name.equalsIgnoreCase("link")) {
-                                item.link = parser.nextText();
-                            } else if (name.equalsIgnoreCase("description")) {
-                                item.description = parser.nextText();
-                            } else if (name.equalsIgnoreCase("pubDate")) {
-                                item.pubDate = new Date(parser.nextText());
-                            }
-                        }
-                        break;
-                    case XmlPullParser.END_TAG:
-                        name = parser.getName();
-                        if (name.equalsIgnoreCase("item") && item != null) {
-                            list.add(item);
-                        }
-                        break;
-                }
-                eventType = parser.next();
-            }
-        }
-    }
-
-    class MyAdapter extends BaseAdapter {
 
         @Override
-        public View getView(int position, View convertView, ViewGroup viewGroup) {
-            ViewHolder holder;
-
-            if (convertView == null) {
-                convertView = LayoutInflater.from(RssMainActivity.this).inflate(android.R.layout.simple_list_item_1, viewGroup, false);
-                holder = new ViewHolder();
-                holder.title = convertView.findViewById(android.R.id.text1);
-                convertView.setTag(holder);
+        protected void onPostExecute(List<RssItem> result) {
+            if (result.isEmpty()) {
+                Toast.makeText(RssMainActivity.this, "불러올 데이터가 없습니다", Toast.LENGTH_SHORT).show();
             } else {
-                holder = (ViewHolder) convertView.getTag();
+                adapter.notifyDataSetChanged();
             }
-
-            HaniItem item = list.get(position);
-            holder.title.setText(item.title);
-            return convertView;
         }
 
-        class ViewHolder {
-            TextView title;
-        }
+        private void parseRss(InputStream inputStream) {
+            try {
+                XmlPullParser parser = Xml.newPullParser();
+                parser.setInput(new InputStreamReader(inputStream));
 
-        @Override
-        public int getCount() {
-            return list.size();
-        }
-
-        @Override
-        public Object getItem(int i) {
-            return list.get(i);
-        }
-
-        @Override
-        public long getItemId(int i) {
-            return list.get(i).id;
+                int eventType = parser.getEventType();
+                RssItem currentItem = null;
+                while (eventType != XmlPullParser.END_DOCUMENT) {
+                    String name;
+                    switch (eventType) {
+                        case XmlPullParser.START_TAG:
+                            name = parser.getName();
+                            if (name.equalsIgnoreCase("item")) {
+                                currentItem = new RssItem();
+                            } else if (currentItem != null) {
+                                if (name.equalsIgnoreCase("title")) {
+                                    currentItem.title = parser.nextText();
+                                } else if (name.equalsIgnoreCase("link")) {
+                                    currentItem.link = parser.nextText();
+                                } else if (name.equalsIgnoreCase("description")) {
+                                    currentItem.description = parser.nextText();
+                                }
+                            }
+                            break;
+                        case XmlPullParser.END_TAG:
+                            name = parser.getName();
+                            if (name.equalsIgnoreCase("item") && currentItem != null) {
+                                rssItemList.add(currentItem);
+                                currentItem = null;
+                            }
+                            break;
+                    }
+                    eventType = parser.next();
+                }
+            } catch (Exception e) {
+                Log.e(TAG, "Parsing error", e);
+            }
         }
     }
 }
