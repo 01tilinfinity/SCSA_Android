@@ -1,9 +1,12 @@
 package com.scsa.goatsaeng;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.util.Xml;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -34,6 +37,19 @@ public class RssMainActivity extends AppCompatActivity {
         listView.setAdapter(adapter);
 
         new RssAsyncTask().execute("https://www.hani.co.kr/rss/");
+
+        // 여기 새로 추가!
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                RssItem item = rssItemList.get(position);
+                Intent intent = new Intent(RssMainActivity.this, RssDetailActivity.class);
+                intent.putExtra("title", item.title);
+                intent.putExtra("description", item.description);
+                intent.putExtra("link", item.link);
+                startActivity(intent);
+            }
+        });
     }
 
     private class RssAsyncTask extends AsyncTask<String, Void, List<RssItem>> {

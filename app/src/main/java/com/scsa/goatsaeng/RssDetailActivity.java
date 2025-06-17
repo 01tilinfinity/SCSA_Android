@@ -20,9 +20,9 @@ public class RssDetailActivity extends AppCompatActivity {
         desc = findViewById(R.id.desc);
 
         String getTitle = getIntent().getStringExtra("title");
-        String getDesc = getIntent().getStringExtra("desc");
+        String getLink = getIntent().getStringExtra("link");
 
         title.setText(getTitle);
-        desc.loadData(getDesc, "text/html; charset=UTF-8", null);
+        desc.loadUrl(getLink);
     }
 }
