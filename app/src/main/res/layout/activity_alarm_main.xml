@@ -2,49 +2,85 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="#000000"
+    android:padding="16dp">
 
     <EditText
         android:id="@+id/elap"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="몇 초 후 알람"
-        android:inputType="number" />
+        android:inputType="number"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#AAAAAA"
+        android:fontFamily="@font/noto_sans_kr"
+        android:textSize="18sp"
+        android:layout_marginBottom="16dp" />
 
     <Button
         android:id="@+id/reg1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="n초 후 알람 설정" />
+        android:text="n초 후 알람 설정"
+        android:textColor="#FFFFFF"
+        android:fontFamily="@font/noto_sans_kr"
+        android:backgroundTint="#222222"
+        android:textSize="18sp"
+        android:layout_marginBottom="8dp" />
 
     <Button
         android:id="@+id/cancel1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="n초 후 알람 해제" />
+        android:text="n초 후 알람 해제"
+        android:textColor="#FFFFFF"
+        android:fontFamily="@font/noto_sans_kr"
+        android:backgroundTint="#222222"
+        android:textSize="18sp"
+        android:layout_marginBottom="8dp" />
 
     <Button
         android:id="@+id/date"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="날짜 선택" />
+        android:text="날짜 선택"
+        android:textColor="#FFFFFF"
+        android:fontFamily="@font/noto_sans_kr"
+        android:backgroundTint="#222222"
+        android:textSize="18sp"
+        android:layout_marginBottom="8dp" />
 
     <Button
         android:id="@+id/time"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="시간 선택" />
+        android:text="시간 선택"
+        android:textColor="#FFFFFF"
+        android:fontFamily="@font/noto_sans_kr"
+        android:backgroundTint="#222222"
+        android:textSize="18sp"
+        android:layout_marginBottom="8dp" />
 
     <Button
         android:id="@+id/reg2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="날짜 알람 등록" />
+        android:text="날짜 알람 등록"
+        android:textColor="#FFFFFF"
+        android:fontFamily="@font/noto_sans_kr"
+        android:backgroundTint="#222222"
+        android:textSize="18sp"
+        android:layout_marginBottom="8dp" />
 
     <Button
         android:id="@+id/cancel2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="날짜 알람 해제" />
+        android:text="날짜 알람 해제"
+        android:textColor="#FFFFFF"
+        android:fontFamily="@font/noto_sans_kr"
+        android:backgroundTint="#222222"
+        android:textSize="18sp" />
 
 </LinearLayout>

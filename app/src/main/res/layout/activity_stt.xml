@@ -2,16 +2,26 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:orientation="vertical"
+    android:background="#121212"
+    android:padding="16dp">
+
     <Button
         android:id="@+id/bt"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:text="구글 음성인식 UI 그대로 이용" />
+        android:text="구글 음성인식 UI 그대로 이용"
+        android:textColor="#FFFFFF"
+        android:fontFamily="@font/noto_sans_kr"
+        android:backgroundTint="#333333"
+        android:textSize="18sp" />
+
     <TextView
         android:id="@+id/tv"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:textSize="20dp"
+        android:textSize="20sp"
+        android:textColor="#FFFFFF"
+        android:fontFamily="@font/noto_sans_kr"
         android:gravity="center_vertical" />
 </LinearLayout>
