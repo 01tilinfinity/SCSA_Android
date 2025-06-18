@@ -85,6 +85,17 @@
             android:textColor="#FFFFFF"
             android:fontFamily="@font/noto_sans_kr"
             android:backgroundTint="#222222"
+            android:textSize="18sp"
+            android:layout_marginBottom="12dp"/>
+
+        <Button
+            android:id="@+id/btnBeacon"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="내 자리 찾기"
+            android:textColor="#FFFFFF"
+            android:fontFamily="@font/noto_sans_kr"
+            android:backgroundTint="#222222"
             android:textSize="18sp"/>
 
     </LinearLayout>

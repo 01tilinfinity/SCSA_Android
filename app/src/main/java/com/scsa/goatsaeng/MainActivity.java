@@ -9,7 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Button btnAlarm, btnMouse, btnStt, btnTts, btnTodo, btnRss, btnNfc;
+    private Button btnAlarm, btnMouse, btnStt, btnTts, btnTodo, btnRss, btnNfc, btnBeacon;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
         btnTodo = findViewById(R.id.btnTodo);
         btnRss = findViewById(R.id.btnRss);
         btnNfc = findViewById(R.id.btnNfc);
+        btnBeacon = findViewById(R.id.btnBeacon);
 
         btnAlarm.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -76,6 +77,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, NfcActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        btnBeacon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, BeaconActivity.class);
                 startActivity(intent);
             }
         });
