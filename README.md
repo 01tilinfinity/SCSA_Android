@@ -54,4 +54,4 @@ GoatSaeng/
 │   │   └── AndroidManifest.xml           # 앱 구성 및 권한 설정
 ├── gradle/                                # Gradle Wrapper
 ├── build.gradle                           # 빌드 설정
-└── README.md                              # 문서화
+└── README.md                              
