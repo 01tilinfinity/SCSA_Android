@@ -9,7 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Button btnAlarm, btnMouse, btnStt, btnTts, btnTodo, btnRss;
+    private Button btnAlarm, btnMouse, btnStt, btnTts, btnTodo, btnRss, btnNfc;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,7 +21,8 @@ public class MainActivity extends AppCompatActivity {
         btnStt = findViewById(R.id.btnStt);
         btnTts = findViewById(R.id.btnTts);
         btnTodo = findViewById(R.id.btnTodo);
-        btnRss = findViewById(R.id.btnRss);   // ⭐ 추가 ⭐
+        btnRss = findViewById(R.id.btnRss);
+        btnNfc = findViewById(R.id.btnNfc);
 
         btnAlarm.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,10 +64,18 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        btnRss.setOnClickListener(new View.OnClickListener() {  // ⭐ 추가 ⭐
+        btnRss.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, RssMainActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        btnNfc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, NfcActivity.class);
                 startActivity(intent);
             }
         });

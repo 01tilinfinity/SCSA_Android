@@ -74,6 +74,17 @@
             android:textColor="#FFFFFF"
             android:fontFamily="@font/noto_sans_kr"
             android:backgroundTint="#222222"
+            android:textSize="18sp"
+            android:layout_marginBottom="12dp"/>
+
+        <Button
+            android:id="@+id/btnNfc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="오늘의 운세 알아보기"
+            android:textColor="#FFFFFF"
+            android:fontFamily="@font/noto_sans_kr"
+            android:backgroundTint="#222222"
             android:textSize="18sp"/>
 
     </LinearLayout>
