@@ -1,52 +1,68 @@
-# 🐐 GoatSaeng (갓생)  
+# 🐐 GoatSaeng - 갓생 관리 어플
+
+> "페이커처럼 살고 싶다."  
+하루를 잘 살고 싶은 당신을 위한 셀프 매니지먼트 앱, **GoatSaeng**!
 
 ---
 
-## 📱 소개
+## 🧠 개요
 
-**GoatSaeng(갓생)**은 사용자의 **루틴 관리**, **음성 기반 기능**, **뉴스 확인**, 그리고 **IoT 기반 기능(NFC/Beacon)**을 통해 ‘갓생’을 살아갈 수 있도록 돕는 Android 자기관리 앱입니다.
-
----
-
-## 🚀 주요 기능
-
-### ✅ 필수 기능
-- **To-do 리스트**: 간단한 할 일 관리 및 메모 기능
-- **TTS (Text-to-Speech)**: 입력한 텍스트를 음성으로 출력
-- **STT (Speech-to-Text)**: 음성을 텍스트로 변환
-- **알람 기능**: 시간 기반 알림 설정 및 푸시 알림
-- **RSS 뉴스 뷰어**: 카테고리별 최신 뉴스 제공
-
-### 🔧 추가 구현 기능
-- **NFC 운세 태그**: 태그를 스캔하면 오늘의 운세를 표시
-- **Beacon 기반 자리 찾기**: 사용자의 위치와 비콘 거리 표시
-- **커스텀 앱 아이콘**: 페이커를 닮은 인물이 염소를 드는 갓생 아이콘
-- **직관적인 UX**: iOS 스타일의 심플한 UI 구성
+**GoatSaeng**은 하루하루 '갓생'을 살고 싶은 현대인들을 위해 개발된 **자기관리 통합 앱**입니다.  
+알람, 할 일, 뉴스 피드, 음성 인식/합성, NFC·Beacon 기반 기능을 통합해, 하나의 앱으로 다양한 자기관리 루틴을 실현할 수 있도록 합니다.
 
 ---
 
-## 🛠 기술 스택
+## 🛠️ 사용 기술 (Tech Stack)
 
-| 기술 | 내용 |
+| 영역 | 스택 |
 |------|------|
-| **언어** | Java |
-| **플랫폼** | Android (minSdk 26, targetSdk 34) |
-| **데이터 저장** | SQLite |
-| **음성 처리** | Android TTS, STT API |
-| **뉴스 제공** | Naver/MK RSS feed 파싱 |
-| **IoT 연동** | NFC (NDEF), Beacon (Bluetooth LE) |
-| **UI 스타일** | Material Design + iOS 스타일 커스터마이징 |
-| **버전 관리** | GitHub |
+| 🧱 플랫폼 | Android SDK, Java |
+| 🎨 UI | XML 레이아웃, ConstraintLayout |
+| 🔊 음성 | Android SpeechRecognizer, TextToSpeech |
+| 📡 근거리 통신 | NFC, BLE Beacon |
+| 📰 뉴스 피드 | RSS (Naver, 매일경제 등) |
+| 🧪 기타 | CountDownTimer, AlarmManager, BroadcastReceiver 등 Android 컴포넌트 활용
 
 ---
 
-## 📸 앱 아이콘
+## ✨ 주요 기능
+
+| 기능명 | 설명 |
+|--------|------|
+| ⏰ **알람 설정** | 알람 생성, 수정, 삭제 가능. `AlarmManager` 및 `BroadcastReceiver`를 활용. |
+| 🗣️ **음성 인식 & 합성** | STT로 음성 입력 → 텍스트 변환, TTS로 텍스트 → 음성 출력 기능 지원. |
+| ✅ **할 일 관리** | SQLite 기반의 To-Do 관리 기능. CRUD 완비. |
+| 📰 **뉴스 뷰어** | 정치/경제/사회/세계 등 카테고리별 최신 RSS 뉴스 조회. |
+| 📱 **NFC 운세 보기** | NFC 태그를 읽어 당일 운세를 랜덤으로 표시. |
+| 📍 **Beacon 기반 자리찾기** | 가장 가까운 Beacon과의 거리 측정 후 표시. (BLE 활용) |
+
+---
+
+## 📱 앱 아이콘
 
 <p align="center">
-  <img src="app/src/main/res/mipmap-xxxhdpi/ic_launcher.png" width="150"/>
+  <img src="https://github.com/01tilinfinity/SCSA_Android/blob/main/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png" alt="app icon" width="150"/>
 </p>
+
+> 페이커를 닮은 캐릭터가 염소를 들어올리는 일러스트에 '갓생' 텍스트가 강조된 아이콘
 
 ---
 
 ## 📂 프로젝트 구조 요약
 
+```bash
+GoatSaeng/
+├── app/
+│   ├── src/
+│   │   ├── main/
+│   │   │   ├── java/com/scsa/goatsaeng/   # Java 소스코드
+│   │   │   ├── res/
+│   │   │   │   ├── layout/                # 화면 UI 구성 XML
+│   │   │   │   ├── drawable/              # 이미지 리소스
+│   │   │   │   ├── mipmap-*               # 앱 아이콘 리소스
+│   │   │   │   ├── values/                # colors, strings 설정
+│   │   │   │   └── xml/                   # 알람 관련 설정 XML
+│   │   └── AndroidManifest.xml           # 앱 구성 및 권한 설정
+├── gradle/                                # Gradle Wrapper
+├── build.gradle                           # 빌드 설정
+└── README.md                              # 문서화
