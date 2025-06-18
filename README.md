@@ -1,14 +1,12 @@
 # 🐐 GoatSaeng - 갓생 관리 어플
 
 > "페이커처럼 살고 싶다."  
-하루를 잘 살고 싶은 당신을 위한 셀프 매니지먼트 앱, **GoatSaeng**!
 
 ---
 
 ## 🧠 개요
 
 **GoatSaeng**은 하루하루 '갓생'을 살고 싶은 현대인들을 위해 개발된 **자기관리 통합 앱**입니다.  
-알람, 할 일, 뉴스 피드, 음성 인식/합성, NFC·Beacon 기반 기능을 통합해, 하나의 앱으로 다양한 자기관리 루틴을 실현할 수 있도록 합니다.
 
 ---
 
@@ -36,15 +34,6 @@
 | 📱 **NFC 운세 보기** | NFC 태그를 읽어 당일 운세를 랜덤으로 표시. |
 | 📍 **Beacon 기반 자리찾기** | 가장 가까운 Beacon과의 거리 측정 후 표시. (BLE 활용) |
 
----
-
-## 📱 앱 아이콘
-
-<p align="center">
-  <img src="https://github.com/01tilinfinity/SCSA_Android/blob/main/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png" alt="app icon" width="150"/>
-</p>
-
-> 페이커를 닮은 캐릭터가 염소를 들어올리는 일러스트에 '갓생' 텍스트가 강조된 아이콘
 
 ---
 
