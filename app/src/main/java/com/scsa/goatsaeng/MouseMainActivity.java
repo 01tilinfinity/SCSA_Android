@@ -2,7 +2,6 @@ package com.scsa.goatsaeng;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 import android.media.AudioAttributes;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
@@ -10,19 +9,15 @@ import android.media.SoundPool;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
-import android.util.Log;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.Random;
 
 public class MouseMainActivity extends AppCompatActivity {
-    private static final String TAG = "MouseMainActivity";
-
     FrameLayout frameLayout;
     FrameLayout.LayoutParams params;
     int count = 0;
@@ -45,7 +40,7 @@ public class MouseMainActivity extends AppCompatActivity {
     ImageView[] imageViews;
 
     int level = 1;
-    int howManyMouse = 5;
+    int howManyMoney = 5;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,20 +68,19 @@ public class MouseMainActivity extends AppCompatActivity {
         mediaPlayer = MediaPlayer.create(this, R.raw.bgm);
         mediaPlayer.setLooping(true);
 
-        init(howManyMouse);
+        init(howManyMoney);
     }
 
     public void init(int nums) {
         count = 0;
         threadEndFlag = true;
-        this.howManyMouse = nums;
-        gameSpeed = (int) (gameSpeed * (10 - level) / 10.0);
+        this.howManyMoney = nums;
         frameLayout.removeAllViews();
 
         imageViews = new ImageView[nums];
         for (int i = 0; i < nums; i++) {
             ImageView iv = new ImageView(this);
-            iv.setImageResource(R.drawable.running_mouse_trans);
+            iv.setImageResource(R.drawable.krw);
             frameLayout.addView(iv, params);
             imageViews[i] = iv;
             iv.setOnClickListener(h);
@@ -126,20 +120,26 @@ public class MouseMainActivity extends AppCompatActivity {
             soundPool.play(killSound, 1, 1, 0, 0, 1);
             iv.setVisibility(View.INVISIBLE);
 
-            Toast.makeText(MouseMainActivity.this, "Die...." + count, Toast.LENGTH_SHORT).show();
-            if (count == howManyMouse) {
+            if (count == howManyMoney) {
                 threadEndFlag = false;
                 mouseTask.cancel(true);
 
+                int total = howManyMoney * 50000;
+                int nextLevel = level + 1;
+
                 AlertDialog.Builder dialog = new AlertDialog.Builder(MouseMainActivity.this);
-                dialog.setMessage("계속하시겠습니까?");
-                dialog.setPositiveButton("네", new OnClickListener() {
+                dialog.setTitle(level + "단계 통과!");
+                dialog.setMessage("5만원권 " + howManyMoney + "장을 주웠어요.\n" + nextLevel + "단계로 넘어갈까요?");
+                dialog.setCancelable(false);
+                dialog.setPositiveButton("네", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         level++;
-                        init(++howManyMouse);
+                        gameSpeed = Math.max(300, gameSpeed - 100);
+                        howManyMoney++;
+                        init(howManyMoney);
                     }
                 });
-                dialog.setNegativeButton("아니오", new OnClickListener() {
+                dialog.setNegativeButton("아니오", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         finish();
                     }

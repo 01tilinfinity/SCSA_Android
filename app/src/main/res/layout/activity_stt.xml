@@ -9,17 +9,23 @@
     <Button
         android:id="@+id/bt"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:text="구글 음성인식 UI 그대로 이용"
+        android:layout_height="wrap_content"
+        android:minHeight="56dp"
+        android:text="버튼 누르고 말하기"
         android:textColor="#FFFFFF"
         android:fontFamily="@font/noto_sans_kr"
         android:backgroundTint="#333333"
-        android:textSize="18sp" />
+        android:textSize="16sp"
+        android:singleLine="false"
+        android:maxLines="2"
+        android:ellipsize="none"
+        android:gravity="center" />
 
     <TextView
         android:id="@+id/tv"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
+        android:minHeight="50dp"
         android:textSize="20sp"
         android:textColor="#FFFFFF"
         android:fontFamily="@font/noto_sans_kr"

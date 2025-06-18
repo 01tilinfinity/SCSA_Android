@@ -11,6 +11,22 @@
         android:orientation="vertical"
         android:padding="16dp">
 
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginBottom="8dp"
+            android:src="@drawable/goat" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="GOATSaeng"
+            android:textColor="#FFFFFF"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:fontFamily="@font/caprasimo"
+            android:layout_marginBottom="24dp" />
+
         <Button
             android:id="@+id/btnAlarm"
             android:layout_width="match_parent"
@@ -20,18 +36,18 @@
             android:fontFamily="@font/noto_sans_kr"
             android:backgroundTint="#222222"
             android:textSize="18sp"
-            android:layout_marginBottom="12dp"/>
+            android:layout_marginBottom="12dp" />
 
         <Button
             android:id="@+id/btnMouse"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="마우스캐치 실행"
+            android:text="럭키드로우"
             android:textColor="#FFFFFF"
             android:fontFamily="@font/noto_sans_kr"
             android:backgroundTint="#222222"
             android:textSize="18sp"
-            android:layout_marginBottom="12dp"/>
+            android:layout_marginBottom="12dp" />
 
         <Button
             android:id="@+id/btnStt"
@@ -42,7 +58,7 @@
             android:fontFamily="@font/noto_sans_kr"
             android:backgroundTint="#222222"
             android:textSize="18sp"
-            android:layout_marginBottom="12dp"/>
+            android:layout_marginBottom="12dp" />
 
         <Button
             android:id="@+id/btnTts"
@@ -53,7 +69,7 @@
             android:fontFamily="@font/noto_sans_kr"
             android:backgroundTint="#222222"
             android:textSize="18sp"
-            android:layout_marginBottom="12dp"/>
+            android:layout_marginBottom="12dp" />
 
         <Button
             android:id="@+id/btnTodo"
@@ -64,7 +80,7 @@
             android:fontFamily="@font/noto_sans_kr"
             android:backgroundTint="#222222"
             android:textSize="18sp"
-            android:layout_marginBottom="12dp"/>
+            android:layout_marginBottom="12dp" />
 
         <Button
             android:id="@+id/btnRss"
@@ -75,7 +91,7 @@
             android:fontFamily="@font/noto_sans_kr"
             android:backgroundTint="#222222"
             android:textSize="18sp"
-            android:layout_marginBottom="12dp"/>
+            android:layout_marginBottom="12dp" />
 
         <Button
             android:id="@+id/btnNfc"
@@ -86,7 +102,7 @@
             android:fontFamily="@font/noto_sans_kr"
             android:backgroundTint="#222222"
             android:textSize="18sp"
-            android:layout_marginBottom="12dp"/>
+            android:layout_marginBottom="12dp" />
 
         <Button
             android:id="@+id/btnBeacon"
@@ -96,7 +112,7 @@
             android:textColor="#FFFFFF"
             android:fontFamily="@font/noto_sans_kr"
             android:backgroundTint="#222222"
-            android:textSize="18sp"/>
+            android:textSize="18sp" />
 
     </LinearLayout>
 </ScrollView>
